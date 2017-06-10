@@ -1,10 +1,18 @@
-
+body{
+  display: flex;
+}
 .stats, .all, .best {
   font-family: "Courier";
+  margin-left: 15px;
+}
+
+.all{
+  position: inherit;
 }
 
 .best {
-  font-size: 48;
+  font-size: 24;
+  max-width: 35%;
 }
 
 .stats {

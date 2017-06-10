@@ -44,7 +44,7 @@ function setup() {
   bestPhrase.class("best");
 
   allPhrases = createP("All phrases:");
-  allPhrases.position(600,10);
+  //allPhrases.position([x], [y]);
   allPhrases.class("all");
 
   stats = createP("Stats");
@@ -52,9 +52,10 @@ function setup() {
   stats.class("stats");
   
   //createCanvas(640, 360);
-  target = "To be or not to be.";
-  popmax = 200;
-  mutationRate = 0.01;
+  //target = "Luis Silvan Dunkum Lopes Jorge Leonel Miranda Esteves Ana Filipa de Alarcao e Silva Coimbra Martins";
+  target = prompt("Please enter a string you would like to generate.");
+  popmax = 2500;
+  mutationRate = 0.001;
 
   // Create a population with a target phrase, mutation rate, and population max
   population = new Population(target, mutationRate, popmax);
@@ -82,13 +83,15 @@ function draw() {
 function displayInfo() {
   // Display current status of population
   var answer = population.getBest();
+  var highestFitness = population.getHighestFitness();
+  highestFitness = Number((highestFitness).toFixed(4))
   
-  bestPhrase.html("Best phrase:<br>" + answer);
+  bestPhrase.html("Best phrase:<br>" + answer +"<br>Highest Fitness:" + highestFitness);
   
   var statstext = "total generations:     " + population.getGenerations() + "<br>";
   statstext +=    "average fitness:       " + nf(population.getAverageFitness()) + "<br>";
   statstext +=    "total population:      " + popmax + "<br>";
-  statstext +=    "mutation rate:         " + floor(mutationRate * 100) + "%";
+  statstext +=    "mutation rate:         " + (mutationRate * 100) + "%";
   
   stats.html(statstext);
 

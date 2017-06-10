@@ -10,6 +10,7 @@
 function Population(p, m, num) {
 
   this.population;                   // Array to hold the current population
+  this.newPopulation = [num];                // Array to hold the new population
   this.matingPool;                   // ArrayList which we will use for our "mating pool"
   this.generations = 0;              // Number of generations
   this.finished = false;             // Are we finished evolving?
@@ -18,6 +19,7 @@ function Population(p, m, num) {
   this.perfectScore = 1;
 
   this.best = "";
+  this.highestFitness = 0.0;
 
   this.population = [];
   for (var i = 0; i < num; i++) {
@@ -61,21 +63,33 @@ function Population(p, m, num) {
   // Create a new generation
   this.generate = function() {
     // Refill the population with children from the mating pool
-    for (var i = 0; i < this.population.length; i++) {
+    for (var i = 0; i < this.population.length - 1; i++) {
       var a = floor(random(this.matingPool.length));
       var b = floor(random(this.matingPool.length));
       var partnerA = this.matingPool[a];
       var partnerB = this.matingPool[b];
       var child = partnerA.crossover(partnerB);
       child.mutate(this.mutationRate);
-      this.population[i] = child;
+      this.newPopulation[i] = child;
     }
+    for (var i = 0; i < this.population.length; i++) {
+      var localMaxFitness = 0.0;
+      if (this.population[i].fitness > localMaxFitness) {
+        localMaxFitness = this.population[i].fitness;
+        this.newPopulation[this.population.length - 1] = this.population[i];
+      }
+    }
+    this.population = this.newPopulation; 
     this.generations++;
   }
 
 
   this.getBest = function() {
     return this.best;
+  }
+
+  this.getHighestFitness = function() {
+    return this.highestFitness;
   }
 
   // Compute the current "most fit" member of the population
@@ -90,6 +104,7 @@ function Population(p, m, num) {
     }
 
     this.best = this.population[index].getPhrase();
+    this.highestFitness = this.population[index].fitness;
     if (worldrecord === this.perfectScore) {
       this.finished = true;
     }
