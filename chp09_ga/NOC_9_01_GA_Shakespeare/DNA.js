@@ -15,7 +15,7 @@
 function newChar() {
 
   var generatedChar = "";
-  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,.?!äÄüÜöÖçÇãÃéÉóÓ ";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,.?!äÄüÜöÖßçÇóÓôÔúÚÕõéÉêÊãÃâÂàÀíÍ ";
 
   generatedChar = possible.charAt(Math.floor(Math.random() * possible.length));
 
