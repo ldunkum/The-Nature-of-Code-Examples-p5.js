@@ -1,3 +1,6 @@
+# This fork is (so far) mainly focused on the implementation of genetic algorithms. 
+[Link](https://ldunkum.github.io/The-Nature-of-Code-Examples-p5.js/chp09_ga/NOC_9_01_GA_Shakespeare/) to the relevant page (still a work in progress)
+
 # The-Nature-of-Code-Examples p5.js
 
 This is the repository for example [p5.js](https://github.com/lmccart/p5.js/) code from [The Nature of Code book](http://natureofcode.com/).  If you are looking for the book's raw content (text, illustrations, images, CSS, etc.), have a look at [The Nature of Code repo](https://github.com/shiffman/The-Nature-of-Code).
