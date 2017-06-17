@@ -13,15 +13,24 @@
 //      -- mutate DNA
 
 function newChar() {
-  var c = floor(random(63,165));
+
+  var generatedChar = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789,.?!äÄüÜöÖçÇãÃéÉóÓ ";
+
+  generatedChar += possible.charAt(Math.floor(Math.random() * possible.length));
+
+
+ /* var c = floor(random(63,165));
   if (c === 63) c = 32;   // space
   if (c === 64) c = 46;   // dot
   if (c === 123) c = 44;  // comma
   if (c === 124) c = 39;  // apostrophe
   if (c === 125) c = 33;  // bang
-  if (c === 126) c = 63;  // question mark
+  if (c === 126) c = 63;  // question mark=
 
-  return String.fromCharCode(c);
+  return String.fromCharCode(c);*/
+
+  return generatedChar;
 }
 
 // Constructor (makes a random DNA)
